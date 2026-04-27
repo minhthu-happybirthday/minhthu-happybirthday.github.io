@@ -151,7 +151,7 @@
 
     <div id="bubbles-container" style="position:fixed; inset:0; pointer-events:none; z-index:99;"></div>
 
-    <div class="gift-box" onclick="openLetter()">
+<div class="gift-box" onclick="openLetter()">
     <div class="gift-icon">🎁</div>
     <p style="font-weight: bold; color: var(--pink-dark); margin: 0; font-size: 14px;">Nhấn xem thư</p>
 </div>
@@ -159,38 +159,44 @@
 <div id="letter-modal" onclick="this.style.display='none'">
     <div class="letter-content" onclick="event.stopPropagation()">
         <h2 style="color: var(--pink-dark); text-align: center; margin: 0;">Gửi Trẫm... 🎀</h2>
-        
-        <img src="mt/image1.png" class="letter-img">
 
-        <p style="font-size: 13px; color: var(--pink-dark); font-weight: bold; margin: 5px 0; animation: bounce 1s infinite;">
-            Kéo xuống để xem thêm ⬇️
-        </p>
-        
+        <div style="position:relative;width:240px;height:240px;margin:20px auto">
+            <div style="position:absolute;top:-15px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:25px solid #ff4757;z-index:10"></div>
+            <div id="w" style="width:100%;height:100%;border-radius:50%;border:5px solid #2f3542;position:relative;overflow:hidden;background:conic-gradient(#ff6b6b 0 90deg,#4ecdc4 90deg 180deg,#ff6b6b 180deg 270deg,#4ecdc4 270deg 360deg);transition:transform 4s cubic-bezier(0.15,0,0.15,1)">
+                <div style="position:absolute;width:50%;height:50%;transform-origin:bottom right;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;transform:rotate(0deg)">50k</div>
+                <div style="position:absolute;width:50%;height:50%;transform-origin:bottom right;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;transform:rotate(90deg)">20k</div>
+                <div style="position:absolute;width:50%;height:50%;transform-origin:bottom right;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;transform:rotate(180deg)">50k</div>
+                <div style="position:absolute;width:50%;height:50%;transform-origin:bottom right;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;transform:rotate(270deg)">20k</div>
+            </div>
+        </div>
+        <div style="text-align:center;margin-bottom:15px">
+            <button id="sb" onclick="const w=document.getElementById('w'),b=this;if(!window.s){window.s=1;b.disabled=true;b.innerText='...';const d=1800+Math.floor(Math.random()*80)+95;w.style.transform=`rotate(${d}deg)`;setTimeout(()=>{document.getElementById('rw').style.display='block';b.innerText='Xong ✨'},4000)}" style="background:#ff4757;color:white;border:none;padding:10px 20px;border-radius:20px;cursor:pointer;font-weight:bold">Quay nhận quà!</button>
+            <div id="rw" style="display:none;margin-top:10px;padding:15px;border:2px dashed #2ed573;background:#f0fff4;border-radius:10px">
+                <div style="margin-bottom:8px">Mã: <b style="color:#2ed573;font-size:1.2rem">hpbd20</b></div>
+                <button onclick="navigator.clipboard.writeText('hpbd20').then(()=>alert('Đã copy mã'))" style="border:none;background:#747d8c;color:white;border-radius:5px;padding:5px 10px;cursor:pointer;font-size:12px">Copy mã</button>
+                <hr style="border:0;border-top:1px solid #2ed573;margin:10px 0;opacity:0.3">
+                <a href="https://momiu-bytes.github.io/" target="_blank" style="display:block;text-decoration:none;background:#ff4757;color:white;padding:10px;border-radius:8px;font-weight:bold;font-size:14px">Đổi quà tại đây 🎁</a>
+            </div>
+        </div>
+        <img src="mt/image1.png" class="letter-img">
+        <p style="font-size: 13px; color: var(--pink-dark); font-weight: bold; margin: 5px 0; animation: bounce 1s infinite; text-align: center;">Kéo xuống để xem thêm ⬇️</p>
         <p style="font-size: 16px; color: #444; line-height: 1.6; text-align: center; padding: 10px;">
             Chúc trẫm sinh nhật vui vẻ tràn ngập hạnh phúc niềm vui, làm được nhiều thứ mình thích. <br><br>
             Tuổi mới xinh đẹp rực rỡ, không nóng giận không suy nghĩ lung tung trong cuộc sống không vướng những điều sa ngã nhaaaa >< <br><br>
             <b>Không được nhịn ăn đó</b> và luôn luôn gặp được may mắn, đạt được nhiều ước mơ và nguyện vọng của chính mình!
         </p>
-        
         <img src="mt/image2.png" class="letter-img">
-        
-        <button onclick="document.getElementById('letter-modal').style.display='none'" 
-                style="background: var(--pink-soft); border:none; padding:15px; border-radius:15px; color:white; width:100%; cursor:pointer; font-weight:bold; font-size: 16px; margin-top: 10px;">
-            Đóng Thư ❤️
-        </button>
+        <button onclick="document.getElementById('letter-modal').style.display='none'" style="background: var(--pink-soft); border:none; padding:15px; border-radius:15px; color:white; width:100%; cursor:pointer; font-weight:bold; font-size: 16px; margin-top: 10px;">Đóng Thư ❤️</button>
     </div>
 </div>
 
 <style>
-/* Thêm hiệu ứng nhún nhảy cho chữ "Kéo xuống" */
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(5px); }
-    }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+.bubble { position: absolute; bottom: -50px; font-size: 30px; animation: flyUp 4s linear forwards; opacity: 0; z-index: 99; }
+@keyframes flyUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-110vh) translateX(30px); opacity: 0; } }
 </style>
 
 <script>
-    // Hàm tạo icon nổi, hãy gọi nó trong hàm checkPass() khi nhập đúng mật khẩu
     function startFloatingIcons() {
         setInterval(() => {
             const icons = ['❤️', '✨', '💖', '🌸'];
@@ -202,6 +208,7 @@
             setTimeout(() => b.remove(), 4000);
         }, 500);
     }
+    function openLetter() { document.getElementById('letter-modal').style.display = 'flex'; }
 </script>
 
     <div id="letter-modal" onclick="this.style.display='none'">
